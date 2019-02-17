@@ -39,6 +39,9 @@ function updateInput(language, number, prefix){
 		var table = document.getElementById('table2Input')
 	}
 	var currentVal = parseInt(table.dataset.count);
+	if(prefix === '2c'){
+		currentVal = 0;
+	}
 	console.log(currentVal);
 	var newNum = currentVal + number;
 	table.dataset.count = newNum.toString();
@@ -180,11 +183,27 @@ function handleOperation() {
 	}
 	if(operation === 'divide') {
 		x = inputOne / inputTwo;
-		if(x.isInteger() === false) {
+		if(Number.isInteger(x) === false) {
 			alert('That didn\'t result in an integer! The Babylonians');
 		}
 		else{
 			return x;
 		}
 	}
+}
+
+function clearAll() {
+	clearInput('c');
+	clearInput('1c');
+	clearInput('2c');
+	document.getElementById('tableInput').dataset.count = 0;
+	document.getElementById('table1Input').dataset.count = 0;
+	document.getElementById('table2Input').dataset.count = 0;
+	console.log(document.getElementById('table2Input').dataset.count);
+	hasPressedOperator = false;
+	operation = "";
+	buttons = document.getElementsByClassName("operatorButtons");
+  for (i = 0; i < buttons.length; i++) {
+    buttons[i].className = buttons[i].className.replace(" active", "");
+  }
 }
