@@ -242,13 +242,23 @@ function updateGreekInput(number, prefix){
 		else{
 			var table = document.getElementById('table1InputG');
 		}
-		var currentNum = table.dataset.count;
-		if(currentNum === '0') {
-			table.dataset.count = number;
+		if(table.dataset.count === '0') {
+			table.dataset.count = number.toString();
 		}
 		else{
-			table.dataset.count += ' ' + number;
+			table.dataset.count += ' ' + number.toString();
 		}
+		clearInput(prefix);
+		var num = table.dataset.count.split(' ');
+		console.log(num);
+		var i=0, j= num.length-1;
+		while(i < num.length) {
+			img = document.getElementById(prefix + parseInt(i+1));
+			img.src='./media/greek/'+num[j]+'.png'
+			i++;
+			j--;
+		}
+		
 	}
 	
 	
