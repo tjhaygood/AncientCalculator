@@ -169,20 +169,22 @@ function prefixHandler(language){
 	}
 }
 
-function handleOperation() {
-	var inputOne = parseInt(document.getElementById('tableInput').dataset.count);
-	var inputTwo = parseInt(document.getElementById('table1Input').dataset.count);
+function handleOperation(inputOne, inputTwo, lang) {
 	var x;
-	console.log(inputOne);
-	console.log(inputTwo);
-	console.log(operation);
+	var negative = 'That resulted in a negative number! \nThe {0} had no concept of negative numbers!';
+	if(lang === 'c'){
+		negative = negative.replace('{0}', "Babylonians");
+	}
+	else{
+		negative = negative.replace('{0}', "Greeks");
+	}
 	if(operation === 'plus') {
 		return inputOne + inputTwo;
 	}
 	if(operation === 'minus') {
 		x = inputOne - inputTwo;
 		if(x < 0){
-			alert('That resulted in a negative number! \nThe Babylonians had no concept of negative numbers!');
+			alert(negative);
 		}
 		else {
 			return x;
@@ -206,9 +208,15 @@ function clearAll() {
 	clearInput('c');
 	clearInput('1c');
 	clearInput('2c');
+	clearInput('g');
+	clearInput('1g');
+	clearInput('2g');
 	document.getElementById('tableInput').dataset.count = 0;
 	document.getElementById('table1Input').dataset.count = 0;
 	document.getElementById('table2Input').dataset.count = 0;
+	document.getElementById('tableInputG').dataset.count = 0;
+	document.getElementById('table1InputG').dataset.count = 0;
+	document.getElementById('table2InputG').dataset.count = 0;
 	hasPressedOperator = false;
 	operation = "";
 	buttons = document.getElementsByClassName("operatorButtons");
@@ -219,58 +227,71 @@ function clearAll() {
 
 
 
-// 	GREEK SHIT 
+// 	Greek functions 
 
 
 function updateGreekInput(number, prefix){
-	if(!prefix){
-		var prefix = prefixHandler('g');
-	}
-	var img = document.getElementById(prefix + 1);
-	if(prefix === 'g'){
-		var table = document.getElementById('tableInputG')
-	}
-	else if(prefix ==='1g'){
-		var table = document.getElementById('table1InputG')
-	}
-	else{
-		var table = document.getElementById('table2InputG')
-	}
-	var currentVal = parseInt(table.dataset.count);
 	if(prefix === '2g'){
-		currentVal = 0;
-	}
-	var newNum = currentVal + number;
-	table.dataset.count = newNum.toString();
-	if(newNum === 1) {
-		img.src='./media/greek/'+newNum+'.png';
+		var table = document.getElementById('table2InputG');
 	}
 	else{
-		console.log(newNum);
-		clearInput(prefix);
-		var num = parseGreek(newNum);
-		var i=0, j= num.length-1;
-		while(i < num.length) {
-			img = document.getElementById(prefix + parseInt(i+1));
-			img.src='./media/greek/'+num[j]+'.png'
-			i++;
-			j--;
+		prefix = prefixHandler('g');
+		if(prefix === 'g'){
+			var table = document.getElementById('tableInputG');
+		}
+		else{
+			var table = document.getElementById('table1InputG');
+		}
+		var currentNum = table.dataset.count;
+		if(currentNum === '0') {
+			table.dataset.count = number;
+		}
+		else{
+			table.dataset.count += ' ' + number;
 		}
 	}
+	
+	
+	
+	
+	
+	// if(!prefix){
+		// var prefix = prefixHandler('g');
+	// }
+	// var img = document.getElementById(prefix + 1);
+	// if(prefix === 'g'){
+		// var table = document.getElementById('tableInputG')
+	// }
+	// else if(prefix ==='1g'){
+		// var table = document.getElementById('table1InputG')
+	// }
+	// else{
+		// var table = document.getElementById('table2InputG')
+	// }
+	// var currentVal = table.dataset.count;
+	// if(prefix === '2g'){
+		// currentVal = 0;
+	// }
+	// var newNum = currentVal + number;
+	// table.dataset.count = newNum.toString();
+	// if(newNum === 1) {
+		// img.src='./media/greek/'+newNum+'.png';
+	// }
+	// else{
+		// clearInput(prefix);
+		// var num = parseGreek(newNum);
+		// console.log(num);
+		// var i=0, j= num.length-1;
+		// while(i < num.length) {
+			// img = document.getElementById(prefix + parseInt(i+1));
+			// img.src='./media/greek/'+num[j]+'.png'
+			// i++;
+			// j--;
+		// }
+	// }
 }
 
 
 function parseGreek(num){
-	var x = new Array(8);
-	var y = num.toString();
-	var i = y.length-1;
-	var j=8;
-	var decimal = 1;
-	while(i >= 0){
-		x[j] = y.charAt(i) * decimal;
-		decimal *= 10;
-		i--;
-		j--;
-	}
-	return removeZeroes(x);
+	
 }

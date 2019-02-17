@@ -67,7 +67,8 @@
 		</tbody>
 	</table>
 	<p/>
-	<a onclick="updateInput('cuneiform', handleOperation(), '2c')"><img src="./media/solve.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+	<a onclick="updateInput('cuneiform', handleOperation(parseInt(document.getElementById('tableInput').dataset.count), 
+																											 parseInt(document.getElementById('table1Input').dataset.count), 'c'), '2c')"><img src="./media/solve.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
 		<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
 			<tr id='table2Input' data-count="0">
@@ -103,7 +104,7 @@
 	<a onclick="updateGreekInput(6)" class="input"><img src="./media/greek/6.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(7)" class="input"><img src="./media/greek/7.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(8)" class="input"><img src="./media/greek/8.png" border="0" height="50" width="50"></a>
-	<a onclick="updateGreekInput(9)" class="input"><img src="./media/greek/9.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(9)" class="input"><img src="./media/greek/9.png" border="0" height="50" width="50"></a><p/>
 	<a onclick="updateGreekInput(10)" class="input"><img src="./media/greek/10.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(20)" class="input"><img src="./media/greek/20.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(30)" class="input"><img src="./media/greek/30.png" border="0" height="50" width="50"></a>
@@ -112,7 +113,7 @@
 	<a onclick="updateGreekInput(60)" class="input"><img src="./media/greek/60.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(70)" class="input"><img src="./media/greek/70.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(80)" class="input"><img src="./media/greek/80.png" border="0" height="50" width="50"></a>
-	<a onclick="updateGreekInput(90)" class="input"><img src="./media/greek/90.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(90)" class="input"><img src="./media/greek/90.png" border="0" height="50" width="50"></a><p/>
 	<a onclick="updateGreekInput(100)" class="input"><img src="./media/greek/100.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(200)" class="input"><img src="./media/greek/200.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(300)" class="input"><img src="./media/greek/300.png" border="0" height="50" width="50"></a>
@@ -126,7 +127,7 @@
 	<a onclick="updateGreekInput(10000)" class="input"><img src="./media/greek/10000.png" border="0" height="50" width="50"></a><p/>
 	<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
-			<tr id='tableInputG' data-count="0">
+			<tr id='tableInputG' data-count="20 50">
 				<td>
 					<img src="./media/background.jpg" id="g8" height="50" width="50">
 					<img src="./media/background.jpg" id="g7" height="50" width="50">
@@ -146,7 +147,7 @@
 	<a onclick="setOperatorActive(event, 'divide')" class="operatorButtons"><img src="./media/divide.png" border="0" height="50" width="50"></a>
 	<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
-			<tr id='table1InputG' data-count="0">
+			<tr id='table1InputG' data-count="">
 				<td>
 					<img src="./media/background.jpg" id="1g8" height="50" width="50">
 					<img src="./media/background.jpg" id="1g7" height="50" width="50">
@@ -161,10 +162,10 @@
 		</tbody>
 	</table>
 	<p/>
-	<a onclick="updateInput('cuneiform', handleOperation(), '2c')"><img src="./media/solve.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+	<a onclick="updateGreekInput(handleOperation('G'), '2g')"><img src="./media/solve.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
 		<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
-			<tr id='table2InputG' data-count="0">
+			<tr id='table2InputG' data-count="">
 				<td>
 					<img src="./media/background.jpg" id="2g8" height="50" width="50">
 					<img src="./media/background.jpg" id="2g7" height="50" width="50">

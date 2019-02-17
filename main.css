@@ -39,11 +39,12 @@
 	cursor: pointer;
 	display: inline-block;
 	vertical-align: top;
-	padding-top: 6px;
+	padding: 6px; 
+	border: 2px solid #DCDCDC;
 }
 
 .operatorButtons.active {
-	border-bottom: 10px solid #000;
+	border: 2px solid #000;
 }
 
 /* Change background color of buttons on hover */
