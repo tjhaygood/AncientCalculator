@@ -42,7 +42,6 @@ function updateInput(language, number, prefix){
 	if(prefix === '2c'){
 		currentVal = 0;
 	}
-	console.log(currentVal);
 	var newNum = currentVal + number;
 	table.dataset.count = newNum.toString();
 	if(newNum === 1) {
@@ -65,7 +64,7 @@ function updateInput(language, number, prefix){
 // converts numbers to base 60, returns array of transliteration
 function toBaseSixty(num) {
 	var x = 0;
-	while(Math.pow(60, x) < num) {
+	while(Math.pow(60, x) < num + 1) {
 		x++;
 	}
 	var result = new Array(x);
@@ -75,6 +74,7 @@ function toBaseSixty(num) {
 		num = num % Math.pow(60, j);
 		j--;
 	}
+	console.log(result);
 	return result;
 }
 
@@ -102,7 +102,7 @@ function parseBaseSixty(numArray){
 			j++;
 		}
 	}
-	result = removeZeroes(result);
+	// result = removeZeroes(result);
 	return result;
 }
 
@@ -172,7 +172,7 @@ function handleOperation() {
 	if(operation === 'minus') {
 		x = inputOne - inputTwo;
 		if(x < 0){
-			alert('That resulted in a negative number! \n The Babylonians had no concept of negative numbers!');
+			alert('That resulted in a negative number! \nThe Babylonians had no concept of negative numbers!');
 		}
 		else {
 			return x;
@@ -184,7 +184,7 @@ function handleOperation() {
 	if(operation === 'divide') {
 		x = inputOne / inputTwo;
 		if(Number.isInteger(x) === false) {
-			alert('That didn\'t result in an integer! The Babylonians');
+			alert('Can\'t do this yet. Sorry.');
 		}
 		else{
 			return x;
