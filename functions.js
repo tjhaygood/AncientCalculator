@@ -122,28 +122,6 @@ function clearInput(prefix) {
 	}
 }
 
-function removeZeroes(array) {
-	var x=array.length;
-	for(var i=0; i < array.length; i++){
-		if(array[i] === 0 || !array[i]){
-			x--;
-		}
-	}
-	zeroLess = new Array(x);
-	var j=0, k=0;
-	while(j < zeroLess.length) {
-		 if(array[k] !== 0 && array[k]){
-			 zeroLess[j] = array[k]
-			 j++;
-			 k++;
-		 }
-		 else {
-			 k++;
-		 }
-	}
-	return zeroLess;
-}
-
 function setOperatorActive(evt, buttonName) {
 	// Get all elements with class="operatorButtons" and remove the class "active"
   buttons = document.getElementsByClassName("operatorButtons");
@@ -335,4 +313,35 @@ function parseGreek(num){
 		}
 	}
 	return decSolution;
+}
+
+
+function checkZero(number){
+	return number !== '0';
+}
+
+function greekToDecimal(number){
+	var x = new Array();
+	var y = number.toString();
+	var i = y.length-1;
+	var decimal = 1;
+	var nextNum;
+	var overFlowArray;
+	while(i >= 0){
+		if(number > 10000){
+			overFlowArray = greekToDecimal(parseInt(y.substring(0,y.length-4)))
+			overFlowArray[overFlowArray.length-1] = "10000"
+			number = parseInt(y.substring(y.length-4));
+			y = number.toString();
+			i = y.length-1;
+		}
+		else if(decimal % 1000 === 0){
+			x.push((decimal / 1000).toString());
+		}		
+		nextNum = y.charAt(i) * decimal;
+		x.push(nextNum.toString());
+		decimal *= 10;
+		i--;
+	}
+	return x.reverse().concat(overFlowArray).filter(checkZero);
 }
