@@ -28,6 +28,19 @@
 
 .input {
 	cursor: pointer;
+	border: 2px solid #000;
+	padding-top: 33px;
+	padding-bottom: 6px;
+	padding-right:5px;
+	padding-left:5px;
+}
+
+.nonCharInput{
+	cursor: pointer;
+	border: 2px solid #000;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
 }
 
 

@@ -28,6 +28,7 @@
 <!-- Cuneiform -->
 <div id="Cuneiform" class="tabcontent">
   <center>
+	<p/>
 	<a onclick="updateInput('cuneiform', 1)" class="input"><img src="./media/cuneiform/1.png" border="0" height="50" width="50" data-c='c'></a>
 	<a onclick="updateInput('cuneiform', 10)" class="input"><img src="./media/cuneiform/10.png" border="0" height="50" width="50"></a><p/>
 	<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
@@ -68,7 +69,7 @@
 	</table>
 	<p/>
 	<a onclick="updateInput('cuneiform', handleOperation(parseInt(document.getElementById('tableInput').dataset.count), 
-																											 parseInt(document.getElementById('table1Input').dataset.count), 'c'), '2c')"><img src="./media/solve.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+	parseInt(document.getElementById('table1Input').dataset.count), 'c'), '2c')"><img src="./media/solve.png" border="0" height="50" width="100" class="nonCharInput"></a>
 		<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
 			<tr id='table2Input' data-count="0">
@@ -86,7 +87,7 @@
 		</tbody>
 	</table>
 	<p/>
-	<a onclick="clearAll()"><img src="./media/clear.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+	<a onclick="clearAll()"><img src="./media/clear.png" border="0" height="50" width="100" class="nonCharInput"></a>
 	</center>
 </div>
 
@@ -96,6 +97,7 @@
 
 <div id="Greek" class="tabcontent">
   <center>
+	<p/>
 	<a onclick="updateGreekInput(1)" class="input"><img src="./media/greek/1.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(2)" class="input"><img src="./media/greek/2.png" border="0" height="50" width="50"></a>
 	<a onclick="updateGreekInput(3)" class="input"><img src="./media/greek/3.png" border="0" height="50" width="50"></a>
@@ -166,7 +168,7 @@
 		</tbody>
 	</table>
 	<p/>
-	<a onclick="updateGreekInput(handleOperation('G'), '2g')"><img src="./media/solve.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+	<a onclick="updateGreekInput(handleOperation('G'), '2g')"><img src="./media/solve.png" border="0" height="50" width="100" class="nonCharInput"></a>
 		<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
 			<tr id='table2InputG' data-count="">
@@ -186,7 +188,7 @@
 		</tbody>
 	</table>
 	<p/>
-	<a onclick="clearAll()"><img src="./media/clear.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+	<a onclick="clearAll()"><img src="./media/clear.png" border="0" height="50" width="100" class="nonCharInput"></a>
 	</center>
 </div>
 
