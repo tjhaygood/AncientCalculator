@@ -108,9 +108,17 @@ function parseBaseSixty(numArray){
 
 function clearInput(prefix) {
 	var img;
-	for(var i=1; i < 9; i++){
+	if(prefix.includes('g')){
+		for(var i=1; i < 11; i++){
 		img = document.getElementById(prefix + i)
 		img.src='./media/background.jpg'
+		}
+	}
+	else{
+		for(var i=1; i < 9; i++){
+			img = document.getElementById(prefix + i)
+			img.src='./media/background.jpg'
+		}
 	}
 }
 
@@ -258,6 +266,7 @@ function updateGreekInput(number, prefix){
 			i++;
 			j--;
 		}
+		console.log(parseGreek(num));
 		
 	}
 	
@@ -303,5 +312,27 @@ function updateGreekInput(number, prefix){
 
 
 function parseGreek(num){
-	
+	var decSolution = 0, i=0, currentNum;
+	while(i < num.length){
+		currentNum = parseInt(num[i])
+		if(currentNum === 10000){
+			decSolution += (decSolution * 10000) - decSolution;
+			i++;
+		}
+		else if(currentNum === 1000){
+			try{
+				decSolution += parseInt(num[i+1]) * 1000
+				i += 2;
+			} catch(error){
+				alert("Accent marks can't come last! Try again.");
+				clearAll();
+				return 0;
+			}
+		}
+		else{
+			decSolution += currentNum;
+			i++;
+		}
+	}
+	return decSolution;
 }
