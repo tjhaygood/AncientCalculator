@@ -6,7 +6,9 @@ var operation = "";
 function tabSwitcher(evt,tabName) {
   // Declare all variables
   var i, tabcontent, tablinks;
-
+	
+	clearAll();
+	
   // Get all elements with class="tabcontent" and hide them
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -26,7 +28,7 @@ function tabSwitcher(evt,tabName) {
 
 function updateInput(language, number, prefix){
 	if(!prefix){
-		var prefix = prefixHandler();
+		var prefix = prefixHandler('c');
 	}
 	var img = document.getElementById(prefix + 1);
 	if(prefix === 'c'){
@@ -74,7 +76,6 @@ function toBaseSixty(num) {
 		num = num % Math.pow(60, j);
 		j--;
 	}
-	console.log(result);
 	return result;
 }
 
@@ -102,7 +103,6 @@ function parseBaseSixty(numArray){
 			j++;
 		}
 	}
-	// result = removeZeroes(result);
 	return result;
 }
 
@@ -117,14 +117,14 @@ function clearInput(prefix) {
 function removeZeroes(array) {
 	var x=array.length;
 	for(var i=0; i < array.length; i++){
-		if(array[i] === 0){
+		if(array[i] === 0 || !array[i]){
 			x--;
 		}
 	}
 	zeroLess = new Array(x);
 	var j=0, k=0;
 	while(j < zeroLess.length) {
-		 if(array[k] !== 0){
+		 if(array[k] !== 0 && array[k]){
 			 zeroLess[j] = array[k]
 			 j++;
 			 k++;
@@ -150,12 +150,22 @@ function setOperatorActive(evt, buttonName) {
 }
 
 
-function prefixHandler(){
-	if(hasPressedOperator){
-		return '1c';
+function prefixHandler(language){
+	if(language === 'c'){	
+		if(hasPressedOperator){
+			return '1c';
+		}
+		else {
+			return 'c'
+		}
 	}
 	else {
-		return 'c'
+		if(hasPressedOperator){
+			return '1g';
+		}
+		else {
+			return 'g'
+		}
 	}
 }
 
@@ -199,11 +209,68 @@ function clearAll() {
 	document.getElementById('tableInput').dataset.count = 0;
 	document.getElementById('table1Input').dataset.count = 0;
 	document.getElementById('table2Input').dataset.count = 0;
-	console.log(document.getElementById('table2Input').dataset.count);
 	hasPressedOperator = false;
 	operation = "";
 	buttons = document.getElementsByClassName("operatorButtons");
   for (i = 0; i < buttons.length; i++) {
     buttons[i].className = buttons[i].className.replace(" active", "");
   }
+}
+
+
+
+// 	GREEK SHIT 
+
+
+function updateGreekInput(number, prefix){
+	if(!prefix){
+		var prefix = prefixHandler('g');
+	}
+	var img = document.getElementById(prefix + 1);
+	if(prefix === 'g'){
+		var table = document.getElementById('tableInputG')
+	}
+	else if(prefix ==='1g'){
+		var table = document.getElementById('table1InputG')
+	}
+	else{
+		var table = document.getElementById('table2InputG')
+	}
+	var currentVal = parseInt(table.dataset.count);
+	if(prefix === '2g'){
+		currentVal = 0;
+	}
+	var newNum = currentVal + number;
+	table.dataset.count = newNum.toString();
+	if(newNum === 1) {
+		img.src='./media/greek/'+newNum+'.png';
+	}
+	else{
+		console.log(newNum);
+		clearInput(prefix);
+		var num = parseGreek(newNum);
+		var i=0, j= num.length-1;
+		while(i < num.length) {
+			img = document.getElementById(prefix + parseInt(i+1));
+			img.src='./media/greek/'+num[j]+'.png'
+			i++;
+			j--;
+		}
+	}
+}
+
+
+function parseGreek(num){
+	var x = new Array(8);
+	var y = num.toString();
+	var i = y.length-1;
+	var j=8;
+	var decimal = 1;
+	while(i >= 0){
+		x[j] = y.charAt(i) * decimal;
+		decimal *= 10;
+		i--;
+		j--;
+	}
+	return removeZeroes(x);
 }

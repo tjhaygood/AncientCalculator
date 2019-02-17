@@ -19,11 +19,13 @@
 <!-- Tab links -->
 <div class="tab">
 	<span>Which language would you like to use?</span>
-  <button class="tablinks" onclick="tabSwitcher(event, 'Cuneiform')" id="defaultOpen">Cuneiform</button>
-  <button class="tablinks" onclick="tabSwitcher(event, 'Paris')">Ancient Greek</button>
+  <button class="tablinks" onclick="tabSwitcher(event, 'Cuneiform')" >Cuneiform</button>
+  <button class="tablinks" onclick="tabSwitcher(event, 'Greek')" id="defaultOpen">Ancient Greek</button>
 </div>
 
-<!-- Tab content -->
+
+
+<!-- Cuneiform -->
 <div id="Cuneiform" class="tabcontent">
   <center>
 	<a onclick="updateInput('cuneiform', 1)" class="input"><img src="./media/cuneiform/1.png" border="0" height="50" width="50" data-c='c'></a>
@@ -87,8 +89,98 @@
 	</center>
 </div>
 
-<div id="Paris" class="tabcontent">
-  <h3>Ancient Greek</h3>
+
+<!-- Greek -->
+
+
+<div id="Greek" class="tabcontent">
+  <center>
+	<a onclick="updateGreekInput(1)" class="input"><img src="./media/greek/1.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(2)" class="input"><img src="./media/greek/2.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(3)" class="input"><img src="./media/greek/3.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(4)" class="input"><img src="./media/greek/4.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(5)" class="input"><img src="./media/greek/5.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(6)" class="input"><img src="./media/greek/6.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(7)" class="input"><img src="./media/greek/7.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(8)" class="input"><img src="./media/greek/8.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(9)" class="input"><img src="./media/greek/9.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(10)" class="input"><img src="./media/greek/10.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(20)" class="input"><img src="./media/greek/20.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(30)" class="input"><img src="./media/greek/30.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(40)" class="input"><img src="./media/greek/40.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(50)" class="input"><img src="./media/greek/50.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(60)" class="input"><img src="./media/greek/60.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(70)" class="input"><img src="./media/greek/70.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(80)" class="input"><img src="./media/greek/80.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(90)" class="input"><img src="./media/greek/90.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(100)" class="input"><img src="./media/greek/100.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(200)" class="input"><img src="./media/greek/200.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(300)" class="input"><img src="./media/greek/300.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(400)" class="input"><img src="./media/greek/400.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(500)" class="input"><img src="./media/greek/500.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(600)" class="input"><img src="./media/greek/600.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(700)" class="input"><img src="./media/greek/700.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(800)" class="input"><img src="./media/greek/800.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(900)" class="input"><img src="./media/greek/900.png" border="0" height="50" width="50"></a><p/>
+	<a onclick="updateGreekInput(1000)" class="input"><img src="./media/greek/1000.png" border="0" height="50" width="50"></a>
+	<a onclick="updateGreekInput(10000)" class="input"><img src="./media/greek/10000.png" border="0" height="50" width="50"></a><p/>
+	<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
+		<tbody>
+			<tr id='tableInputG' data-count="0">
+				<td>
+					<img src="./media/background.jpg" id="g8" height="50" width="50">
+					<img src="./media/background.jpg" id="g7" height="50" width="50">
+					<img src="./media/background.jpg" id="g6" height="50" width="50">
+					<img src="./media/background.jpg" id="g5" height="50" width="50">
+					<img src="./media/background.jpg" id="g4" height="50" width="50">
+					<img src="./media/background.jpg" id="g3" height="50" width="50">
+					<img src="./media/background.jpg" id="g2" height="50" width="50">
+					<img src="./media/background.jpg" id="g1" height="50" width="50">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a onclick="setOperatorActive(event, 'plus')" class="operatorButtons"><img src="./media/plus.png" border="0" height="50" width="50"></a>
+	<a onclick="setOperatorActive(event, 'minus')" class="operatorButtons"><img src="./media/minus.png" border="0" height="50" width="50"></a>
+	<a onclick="setOperatorActive(event, 'multiply')" class="operatorButtons"><img src="./media/multiply.png" border="0" height="50" width="50"></a>
+	<a onclick="setOperatorActive(event, 'divide')" class="operatorButtons"><img src="./media/divide.png" border="0" height="50" width="50"></a>
+	<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
+		<tbody>
+			<tr id='table1InputG' data-count="0">
+				<td>
+					<img src="./media/background.jpg" id="1g8" height="50" width="50">
+					<img src="./media/background.jpg" id="1g7" height="50" width="50">
+					<img src="./media/background.jpg" id="1g6" height="50" width="50">
+					<img src="./media/background.jpg" id="1g5" height="50" width="50">
+					<img src="./media/background.jpg" id="1g4" height="50" width="50">
+					<img src="./media/background.jpg" id="1g3" height="50" width="50">
+					<img src="./media/background.jpg" id="1g2" height="50" width="50">
+					<img src="./media/background.jpg" id="1g1" height="50" width="50">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p/>
+	<a onclick="updateInput('cuneiform', handleOperation(), '2c')"><img src="./media/solve.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+		<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
+		<tbody>
+			<tr id='table2InputG' data-count="0">
+				<td>
+					<img src="./media/background.jpg" id="2g8" height="50" width="50">
+					<img src="./media/background.jpg" id="2g7" height="50" width="50">
+					<img src="./media/background.jpg" id="2g6" height="50" width="50">
+					<img src="./media/background.jpg" id="2g5" height="50" width="50">
+					<img src="./media/background.jpg" id="2g4" height="50" width="50">
+					<img src="./media/background.jpg" id="2g3" height="50" width="50">
+					<img src="./media/background.jpg" id="2g2" height="50" width="50">
+					<img src="./media/background.jpg" id="2g1" height="50" width="50">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p/>
+	<a onclick="clearAll()"><img src="./media/clear.png" border="0" height="50" width="100" style="cursor: pointer;"></a>
+	</center>
 </div>
 
   
