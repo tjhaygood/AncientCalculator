@@ -77,3 +77,7 @@
   border: 1px solid #ccc;
   border-top: none;
 }
+
+.errorMessage {
+	color: red;
+}

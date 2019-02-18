@@ -19,8 +19,8 @@
 <!-- Tab links -->
 <div class="tab">
 	<span>Which language would you like to use?</span>
-  <button class="tablinks" onclick="tabSwitcher(event, 'Cuneiform')" >Cuneiform</button>
-  <button class="tablinks" onclick="tabSwitcher(event, 'Greek')" id="defaultOpen">Ancient Greek</button>
+  <button class="tablinks" onclick="tabSwitcher(event, 'Cuneiform')" id="defaultOpen">Cuneiform</button>
+  <button class="tablinks" onclick="tabSwitcher(event, 'Greek')">Ancient Greek</button>
 </div>
 
 
@@ -88,6 +88,7 @@
 	</table>
 	<p/>
 	<a onclick="clearAll()"><img src="./media/clear.png" border="0" height="50" width="100" class="nonCharInput"></a>
+	<p/><span id='errorMessage' class='errorMessage'></span>
 	</center>
 </div>
 
@@ -189,6 +190,7 @@
 	</table>
 	<p/>
 	<a onclick="clearAll()"><img src="./media/clear.png" border="0" height="50" width="100" class="nonCharInput"></a>
+	<p/><span id='errorMessageG' class='errorMessage'></span>
 	</center>
 </div>
 

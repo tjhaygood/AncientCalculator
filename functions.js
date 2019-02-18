@@ -158,11 +158,14 @@ function prefixHandler(language){
 function handleOperation(inputOne, inputTwo, lang) {
 	var x;
 	var negative = 'That resulted in a negative number! \nThe {0} had no concept of negative numbers!';
+	var nonInt = 'That didn\'t result in an integer. \nThe {0} were too ambiguous with fractions for them to be \naccurately represented with a calculator.'
 	if(lang === 'c'){
 		negative = negative.replace('{0}', "Babylonians");
+		nonInt = nonInt.replace('{0}', "Babylonians");
 	}
 	else{
 		negative = negative.replace('{0}', "Greeks");
+		nonInt = nonInt.replace('{0}', "Greeks");
 	}
 	if(operation === 'plus') {
 		return inputOne + inputTwo;
@@ -170,7 +173,12 @@ function handleOperation(inputOne, inputTwo, lang) {
 	if(operation === 'minus') {
 		x = inputOne - inputTwo;
 		if(x < 0){
-			alert(negative);
+			if(lang === 'c'){
+				document.getElementById('errorMessage').innerHTML = negative;
+			}
+			else {
+				document.getElementById('errorMessageG').innerHTML = negative;
+			}
 		}
 		else {
 			return x;
@@ -182,7 +190,12 @@ function handleOperation(inputOne, inputTwo, lang) {
 	if(operation === 'divide') {
 		x = inputOne / inputTwo;
 		if(Number.isInteger(x) === false) {
-			alert('Can\'t do this yet. Sorry.');
+			if(lang === 'c'){
+				document.getElementById('errorMessage').innerHTML = nonInt;
+			}
+			else {
+				document.getElementById('errorMessageG').innerHTML = nonInt;
+			}
 		}
 		else{
 			return x;
@@ -209,6 +222,8 @@ function clearAll() {
   for (i = 0; i < buttons.length; i++) {
     buttons[i].className = buttons[i].className.replace(" active", "");
   }
+	document.getElementById('errorMessage').innerHTML = "";
+	document.getElementById('errorMessageG').innerHTML = "";
 }
 
 
@@ -219,6 +234,19 @@ function clearAll() {
 function updateGreekInput(number, prefix){
 	if(prefix === '2g'){
 		var table = document.getElementById('table2InputG');
+		var inputOneTable = document.getElementById('tableInputG');
+		var inputTwoTable = document.getElementById('table1InputG');
+		var inputOne = parseGreek(inputOneTable.dataset.count.split(' '));
+		var inputTwo = parseGreek(inputTwoTable.dataset.count.split(' '));
+		var result = decimalToGreek(handleOperation(inputOne, inputTwo, 'g'));
+		console.log(result);
+		var i=0, j= result.length-1;
+		while(i < result.length) {
+			img = document.getElementById(prefix + parseInt(i+1));
+			img.src='./media/greek/'+result[j]+'.png'
+			i++;
+			j--;
+		}
 	}
 	else{
 		prefix = prefixHandler('g');
@@ -247,45 +275,6 @@ function updateGreekInput(number, prefix){
 		console.log(parseGreek(num));
 		
 	}
-	
-	
-	
-	
-	
-	// if(!prefix){
-		// var prefix = prefixHandler('g');
-	// }
-	// var img = document.getElementById(prefix + 1);
-	// if(prefix === 'g'){
-		// var table = document.getElementById('tableInputG')
-	// }
-	// else if(prefix ==='1g'){
-		// var table = document.getElementById('table1InputG')
-	// }
-	// else{
-		// var table = document.getElementById('table2InputG')
-	// }
-	// var currentVal = table.dataset.count;
-	// if(prefix === '2g'){
-		// currentVal = 0;
-	// }
-	// var newNum = currentVal + number;
-	// table.dataset.count = newNum.toString();
-	// if(newNum === 1) {
-		// img.src='./media/greek/'+newNum+'.png';
-	// }
-	// else{
-		// clearInput(prefix);
-		// var num = parseGreek(newNum);
-		// console.log(num);
-		// var i=0, j= num.length-1;
-		// while(i < num.length) {
-			// img = document.getElementById(prefix + parseInt(i+1));
-			// img.src='./media/greek/'+num[j]+'.png'
-			// i++;
-			// j--;
-		// }
-	// }
 }
 
 
@@ -316,20 +305,30 @@ function parseGreek(num){
 }
 
 
-function checkZero(number){
-	return number !== '0';
+function removeZeroes(array){
+	var result = new Array();
+	for(var i=0; i< array.length; i++){
+		if(array[i] && array[i] !== '0'){
+			result.push(array[i])
+		}
+	}
+	return result;
 }
 
-function greekToDecimal(number){
+function decimalToGreek(number){
 	var x = new Array();
-	var y = number.toString();
-	var i = y.length-1;
+	try{
+		var y = number.toString();
+		var i = y.length-1;
+	} catch {
+		console.log('oof');
+	}
 	var decimal = 1;
 	var nextNum;
 	var overFlowArray;
 	while(i >= 0){
 		if(number > 10000){
-			overFlowArray = greekToDecimal(parseInt(y.substring(0,y.length-4)))
+			overFlowArray = decimalToGreek(parseInt(y.substring(0,y.length-4)))
 			overFlowArray[overFlowArray.length-1] = "10000"
 			number = parseInt(y.substring(y.length-4));
 			y = number.toString();
@@ -343,5 +342,5 @@ function greekToDecimal(number){
 		decimal *= 10;
 		i--;
 	}
-	return x.reverse().concat(overFlowArray).filter(checkZero);
+	return removeZeroes(x.reverse().concat(overFlowArray));
 }
