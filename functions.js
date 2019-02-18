@@ -317,30 +317,37 @@ function removeZeroes(array){
 
 function decimalToGreek(number){
 	var x = new Array();
-	try{
-		var y = number.toString();
-		var i = y.length-1;
-	} catch {
-		console.log('oof');
-	}
+	var y = number.toString();
+	var i = y.length-1;
 	var decimal = 1;
 	var nextNum;
-	var overFlowArray;
+	var overFlowArray = new Array();
 	while(i >= 0){
 		if(number > 10000){
 			overFlowArray = decimalToGreek(parseInt(y.substring(0,y.length-4)))
-			overFlowArray[overFlowArray.length-1] = "10000"
+			overFlowArray.push("10000")
+			console.log(overFlowArray);
 			number = parseInt(y.substring(y.length-4));
 			y = number.toString();
 			i = y.length-1;
 		}
 		else if(decimal % 1000 === 0){
-			x.push((decimal / 1000).toString());
-		}		
-		nextNum = y.charAt(i) * decimal;
-		x.push(nextNum.toString());
-		decimal *= 10;
-		i--;
+			x.push((y.charAt(i) * decimal / 1000).toString());
+			x.push("1000")
+			i--;
+			decimal *= 10;
+		}
+		else {
+			nextNum = y.charAt(i) * decimal;
+			x.push(nextNum.toString());
+			i--;
+			decimal *= 10;
+		}
 	}
-	return removeZeroes(x.reverse().concat(overFlowArray));
+	if(overFlowArray){
+		return removeZeroes(overFlowArray.concat(x.reverse()));
+	}
+	else{
+		removeZeroes(x.reverse())
+	}
 }
