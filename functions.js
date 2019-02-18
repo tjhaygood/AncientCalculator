@@ -291,7 +291,7 @@ function parseGreek(num){
 				decSolution += parseInt(num[i+1]) * 1000
 				i += 2;
 			} catch(error){
-				alert("Accent marks can't come last! Try again.");
+				document.getElementById('errorMessageG').innerHTML = "Accent marks can't come last! Try again.";
 				clearAll();
 				return 0;
 			}
