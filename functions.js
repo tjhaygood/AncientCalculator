@@ -164,8 +164,8 @@ function handleOperation(inputOne, inputTwo, lang) {
 		nonInt = nonInt.replace('{0}', "Babylonians");
 	}
 	else{
-		negative = negative.replace('{0}', "Greeks");
-		nonInt = nonInt.replace('{0}', "Greeks");
+		negative = negative.replace('{0}', "Greeks of Ionia");
+		nonInt = nonInt.replace('{0}', "Greeks of Ionia");
 	}
 	if(operation === 'plus') {
 		return inputOne + inputTwo;
