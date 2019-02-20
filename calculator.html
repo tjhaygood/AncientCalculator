@@ -7,7 +7,7 @@
 <title>Ancient Math Calculator</title>
 <body>
 
-<!-- Navigation -->
+<!-- Navigation Bar -->
 <nav class="w3-bar w3-black">
   <a href="index.html" class="w3-button w3-bar-item">Home</a>
   <a href="calculator.html" class="w3-button w3-bar-item">Ancient Math Calculator</a>
@@ -29,8 +29,8 @@
 <div id="Cuneiform" class="tabcontent">
   <center>
 	<p/>
-	<a onclick="updateInput('cuneiform', 1)" class="input"><img src="./media/cuneiform/1.png" border="0" height="50" width="50" title="1"></a>
-	<a onclick="updateInput('cuneiform', 10)" class="input"><img src="./media/cuneiform/10.png" border="0" height="50" width="50" title="10"></a><p/>
+	<a onclick="updateInput(1)" class="input"><img src="./media/cuneiform/1.png" border="0" height="50" width="50" title="1"></a>
+	<a onclick="updateInput(10)" class="input"><img src="./media/cuneiform/10.png" border="0" height="50" width="50" title="10"></a><p/>
 	<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
 			<tr id='tableInput' data-count="0">
@@ -68,7 +68,7 @@
 		</tbody>
 	</table>
 	<p/>
-	<a onclick="updateInput('cuneiform', handleOperation(parseInt(document.getElementById('tableInput').dataset.count), 
+	<a onclick="updateInput(handleOperation(parseInt(document.getElementById('tableInput').dataset.count), 
 	parseInt(document.getElementById('table1Input').dataset.count), 'c'), '2c')"><img src="./media/solve.png" border="0" height="50" width="100" class="nonCharInput"></a>
 		<table  bgcolor="#FFFFFF" border="5" bordercolor="#000000" cellpadding="2" cellspacing="0" class="tables">
 		<tbody>
